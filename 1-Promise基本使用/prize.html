@@ -50,18 +50,18 @@
                         let n = rand(1, 100);
                         // 判断是否中奖
                         if(n <= 30){
-                            resolve(); //将promise状态设置为成功
+                            resolve(n); //将promise状态设置为成功
                         }else{
-                            reject(); //将promise状态设置为失败
+                            reject(n); //将promise状态设置为失败
                         }
                     }, 1000);
                 });
 
                 // then方法
-                p.then(() => {
-                    alert('恭喜恭喜，奖品为 10万 RMB');
-                }, ()=>{
-                    alert('很遗憾，未中奖');
+                p.then((value) => {
+                    alert('恭喜恭喜，奖品为 10万 RMB，中奖号码为：' + value);
+                }, (reason)=>{
+                    alert('很遗憾，未中奖，未中奖号码为：' + reason);
                 });
             })
     </script>
